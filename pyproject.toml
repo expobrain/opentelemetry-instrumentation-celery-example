@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "opentelemetry-instrumentation-celery-example"
+version = "0.1.0"
+description = ""
+authors = ["Daniele Esposti <daniele@withplum.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+celery = ">=5.0.5,<5.1.0"
+fastapi = ">=0.68.0,<0.69.0"
+redis = ">=3.5.3,<3.6.0"
+uvicorn = "~0.15.0"
+opentelemetry-api = "1.10.0"
+opentelemetry-sdk = "1.10.0"
+opentelemetry-instrumentation = "0.29b0"
+opentelemetry-exporter-otlp = "1.10.0"
+opentelemetry-distro = { version = "0.29b0", extras = ["otlp"] }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

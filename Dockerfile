@@ -1,14 +1,15 @@
-FROM python:3.8.12-slim
+FROM python:3.11-slim
 
 WORKDIR /usr/src/app
 
-RUN pip3 install --upgrade pip
+RUN pip install poetry~=1.4
+RUN poetry config virtualenvs.create false
 
-COPY ./requirements.txt /usr/src/app/requirements.txt
+COPY ./pyproject.toml pyproject.toml
+COPY ./poetry.lock poetry.lock
 
-RUN pip3 install --no-cache-dir \
-        -r /usr/src/app/requirements.txt &&\
-    opentelemetry-bootstrap --action=install
+RUN poetry install
+RUN opentelemetry-bootstrap --action=install
 
 COPY ./ /usr/src/app/
 
