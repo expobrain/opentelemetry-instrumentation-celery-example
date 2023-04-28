@@ -30,7 +30,7 @@ async def add(x, y):
         c.signature(
             "task.add", args=(_x, _y)
         )
-        for _ in range(10)
+        for _ in range(1)
     ).apply_async()
 
     result = futures.get(timeout=2)
